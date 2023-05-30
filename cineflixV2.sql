@@ -1,6 +1,8 @@
+CREATE DATABASE  IF NOT EXISTS `cineflix` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `cineflix`;
 -- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
 --
--- Host: localhost    Database: cineflix
+-- Host: 127.0.0.1    Database: cineflix
 -- ------------------------------------------------------
 -- Server version	8.0.31
 
@@ -144,6 +146,68 @@ LOCK TABLES `doctrine_migration_versions` WRITE;
 /*!40000 ALTER TABLE `doctrine_migration_versions` DISABLE KEYS */;
 INSERT INTO `doctrine_migration_versions` VALUES ('DoctrineMigrations\\Version20230410155524','2023-04-10 17:55:37',1515);
 /*!40000 ALTER TABLE `doctrine_migration_versions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `friendrequest`
+--
+
+DROP TABLE IF EXISTS `friendrequest`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `friendrequest` (
+  `request_id` int NOT NULL AUTO_INCREMENT,
+  `sender_id` int NOT NULL,
+  `receiver_id` int NOT NULL,
+  `status` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`request_id`),
+  KEY `sender_id` (`sender_id`),
+  KEY `receiver_id` (`receiver_id`),
+  CONSTRAINT `friendrequest_ibfk_1` FOREIGN KEY (`sender_id`) REFERENCES `users` (`id`),
+  CONSTRAINT `friendrequest_ibfk_2` FOREIGN KEY (`receiver_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `friendrequest`
+--
+
+LOCK TABLES `friendrequest` WRITE;
+/*!40000 ALTER TABLE `friendrequest` DISABLE KEYS */;
+/*!40000 ALTER TABLE `friendrequest` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `friendship`
+--
+
+DROP TABLE IF EXISTS `friendship`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `friendship` (
+  `friendship_id` int NOT NULL AUTO_INCREMENT,
+  `user_id_1` int NOT NULL,
+  `user_id_2` int NOT NULL,
+  `status` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`friendship_id`),
+  KEY `user_id_1` (`user_id_1`),
+  KEY `user_id_2` (`user_id_2`),
+  CONSTRAINT `friendship_ibfk_1` FOREIGN KEY (`user_id_1`) REFERENCES `users` (`id`),
+  CONSTRAINT `friendship_ibfk_2` FOREIGN KEY (`user_id_2`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `friendship`
+--
+
+LOCK TABLES `friendship` WRITE;
+/*!40000 ALTER TABLE `friendship` DISABLE KEYS */;
+/*!40000 ALTER TABLE `friendship` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -334,7 +398,7 @@ CREATE TABLE `users` (
   `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '(DC2Type:datetime_immutable)',
   `is_verified` tinyint(1) NOT NULL DEFAULT '0',
   `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `email_token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '"null"',
+  `email_token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '"null"',
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_1483A5E9E7927C74` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -386,4 +450,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-30 16:07:39
+-- Dump completed on 2023-05-30 22:51:29
