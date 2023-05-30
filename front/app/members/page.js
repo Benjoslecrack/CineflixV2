@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 export default function App() {
   // const
@@ -41,7 +42,7 @@ export default function App() {
       <h1 className="text-2xl font-bold mb-4">Liste des membres</h1>
       <div className="grid grid-cols-3 gap-4">
         {members.map((member) => (
-          <div key={member.id} className="flex flex-col items-center">
+          <Link key={member.id} className="flex flex-col items-center" href={`/members/${member.id}`}>
             <img
               src={member.profil_pic}
               alt={member.username}
@@ -49,7 +50,7 @@ export default function App() {
             />
             <p className="text-lg font-semibold">{member.username}</p>
             <p className="text-sm text-gray-500">{member.email}</p>
-          </div>
+          </Link>
         ))}
       </div>
     </main>

@@ -101,10 +101,16 @@ const Navbarr = () => {
                   <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-300 rounded-md shadow-lg text-[#14181c]">
                     <ul className="py-2">
                       <li
+                      >
+                        <Link href="/profile" className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                          Profil
+                        </Link>
+                      </li>
+                      <li
                         className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                         onClick={handleLogout}
                       >
-                        Logout
+                        Déconnexion
                       </li>
                     </ul>
                   </div>

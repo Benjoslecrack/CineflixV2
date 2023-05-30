@@ -123,11 +123,11 @@ export const updateLostPassword = async (newPassword, emailToken) => {
         "UPDATE users SET password = ? WHERE email_token = ?", [newPassword, emailToken]
     )
     return result[0]
-   
+
 
 }
 
-export const setEmailTokenAfterLost = async ( emailToken) =>{
+export const setEmailTokenAfterLost = async (emailToken) => {
     const [result] = await pool.query(
         "UPDATE users SET email_token = NULL WHERE email_token = ?", [emailToken]
     )
@@ -140,7 +140,7 @@ export const setEmailTokenAfterLost = async ( emailToken) =>{
  */
 export const getUser = async (id) => {
     const [result] = await pool.query(
-        " SELECT * FROM users WHERE idusers = ?", [id]
+        "SELECT email, profil_pic, username FROM users WHERE id = ?", [id]
     )
     return result[0]
 }
