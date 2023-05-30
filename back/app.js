@@ -9,11 +9,6 @@ import path from "path";
 // Import routers
 import usersRoute from "./routes/users.js";
 import authRoute from "./routes/auth.js";
-import contactRoute from "./routes/contact.js";
-import articleRoute from "./routes/article.js";
-import LexiconRoute from "./routes/lexicon.js";
-import mailRoute from './routes/mail.js';
-import tradeRoute from './routes/trades.js';
 
 // Configs
 dotenv.config();
@@ -42,11 +37,6 @@ app.use('/uploads', express.static('uploads'));
 // Routes
 app.use("/api/users", usersRoute);
 app.use("/api/auth", authRoute);
-app.use("/api/contact", contactRoute);
-app.use("/api/article", articleRoute);
-app.use("/api/lexicon", LexiconRoute);
-app.use("/api/mail", mailRoute);
-app.use("/api/trades", tradeRoute);
 
 // Gestion de l'erreur
 app.use((err, req, res, next) => {

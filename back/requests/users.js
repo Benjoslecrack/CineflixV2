@@ -150,7 +150,7 @@ export const getUser = async (id) => {
  */
 export const getAllUsers = async () => {
     const [result] = await pool.query(
-        " SELECT * FROM users"
+        " SELECT username, profil_pic, id, email FROM users"
     )
     console.log("result all users", result)
     return result

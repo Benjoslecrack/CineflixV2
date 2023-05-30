@@ -7,70 +7,70 @@ import { Button, Text, Input } from "@nextui-org/react";
 import MyModal from "../components/Modal/Modal";
 
 export default function Hero() {
-  const modalContent = (
-    <div className="modal-body p-5 pt-0">
-      <form method="POST" action="/auth/register">
-        <div className="form-floating mb-3">
-          <input
-            type="email"
-            className="form-control rounded-3"
-            id="email"
-            name="email"
-            placeholder="nom@exemple.fr"
-          />
-          <label for="email">Adresse Mail</label>
-        </div>
-        <div className="form-floating mb-3">
-          <input
-            type="password"
-            className="form-control rounded-3"
-            id="password"
-            name="password"
-            placeholder="Votre mot de passe"
-          />
-          <label for="password">Mot de Passe</label>
-        </div>
-        <div className="form-floating mb-3">
-          <input
-            type="text"
-            className="form-control rounded-3"
-            id="username"
-            name="username"
-            placeholder="Votre mot de passe"
-          />
-          <label for="username">Nom d'utilisateur</label>
-        </div>
-        <button
-          className="w-full mb-2 btn btn-lg rounded-3 btn-secondary"
-          type="submit"
-        >
-          S'inscrire
-        </button>
-        <small className="">
-          En cliquant sur "S'inscrire", vous acceptez les{" "}
-          <Link className="underline" href="#">
-            Termes Généraux.
-          </Link>
-        </small>
-        <hr className="my-4" />
-        <h2 className="text-sm font-bold mb-3">Ou utilisez une autre méthode</h2>
-        <button
-          className="w-full py-2 mb-2 btn btn-outline-secondary rounded-3"
-          type="submit"
-        >
-          <i className="bi bi-twitter"></i>
-          S'inscrire avec Twitter
-        </button>
-        <button
-          className="w-full py-2 mb-2 btn btn-outline-primary rounded-3"
-          type="submit"
-        >
-          <i className="bi bi-facebook"></i>
-          S'inscrire avec Facebook
-        </button>
-      </form>
-    </div>
-  );
+  // const modalContent = (
+  //   <div className="modal-body p-5 pt-0">
+  //     <form method="POST" action="/auth/register">
+  //       <div className="form-floating mb-3">
+  //         <input
+  //           type="email"
+  //           className="form-control rounded-3"
+  //           id="email"
+  //           name="email"
+  //           placeholder="nom@exemple.fr"
+  //         />
+  //         <label for="email">Adresse Mail</label>
+  //       </div>
+  //       <div className="form-floating mb-3">
+  //         <input
+  //           type="password"
+  //           className="form-control rounded-3"
+  //           id="password"
+  //           name="password"
+  //           placeholder="Votre mot de passe"
+  //         />
+  //         <label for="password">Mot de Passe</label>
+  //       </div>
+  //       <div className="form-floating mb-3">
+  //         <input
+  //           type="text"
+  //           className="form-control rounded-3"
+  //           id="username"
+  //           name="username"
+  //           placeholder="Votre mot de passe"
+  //         />
+  //         <label for="username">Nom d'utilisateur</label>
+  //       </div>
+  //       <button
+  //         className="w-full mb-2 btn btn-lg rounded-3 btn-secondary"
+  //         type="submit"
+  //       >
+  //         S'inscrire
+  //       </button>
+  //       <small className="">
+  //         En cliquant sur "S'inscrire", vous acceptez les{" "}
+  //         <Link className="underline" href="#">
+  //           Termes Généraux.
+  //         </Link>
+  //       </small>
+  //       <hr className="my-4" />
+  //       <h2 className="text-sm font-bold mb-3">Ou utilisez une autre méthode</h2>
+  //       <button
+  //         className="w-full py-2 mb-2 btn btn-outline-secondary rounded-3"
+  //         type="submit"
+  //       >
+  //         <i className="bi bi-twitter"></i>
+  //         S'inscrire avec Twitter
+  //       </button>
+  //       <button
+  //         className="w-full py-2 mb-2 btn btn-outline-primary rounded-3"
+  //         type="submit"
+  //       >
+  //         <i className="bi bi-facebook"></i>
+  //         S'inscrire avec Facebook
+  //       </button>
+  //     </form>
+  //   </div>
+  // );
 
   return (
     <section id="hero">
@@ -82,12 +82,13 @@ export default function Hero() {
               Dites à vos amis ce qui est bon. <br />
               Sauvegardez ceux que vous voulez voir. <br />
             </h2>
-            <MyModal
+            {/* <MyModal
               buttonText={"Commencez-maintenant - C'est gratuit!"}
               buttonStyle={"btn btn-secondary"}
               modalTitle={"Inscrivez-vous!"}
               modalContent={modalContent}
-            />
+            /> */}
+            <a href="/register" className="btn btn-secondary">Commencez - C'est gratuit !</a>
             <p className="mt-6">
               <strong className="block">
                 Le réseau social des amoureux de films.

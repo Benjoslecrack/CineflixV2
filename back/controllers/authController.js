@@ -9,7 +9,6 @@ import {
   updateLostPassword,
   setEmailTokenAfterLost,
 } from "../requests/users.js";
-import { getUserRole } from "../requests/roles.js";
 import bcrypt from "bcryptjs";
 import dotenv from "dotenv";
 import { createError } from "../helpers/errors.js";
