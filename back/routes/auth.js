@@ -22,7 +22,7 @@ const router = express.Router();
 /** Route de 
  * D'inscription
  */
-router.post("/register",  generateAccessToken, registerController, SendMailWithConfirmationLink);
+router.post("/register",  generateAccessToken, registerController);
 
 /**
  * Route de

@@ -43,16 +43,34 @@ export const registerController = async (req, res, next) => {
     req.body.password = hashPassword;
     console.log(req.body, "confirm register22222");
     const idUser = await createUser({ ...req.body });
-    if (!idUser)
+    if (!idUser) {
       return next(
         createError(
           1001,
           "Problème à la création du compte de l'utilisateur : ",
-          user.email
+          req.body.email
         )
       );
-
-    next();
+    }
+    const user = await getUserByEmail(req.body.email);
+    const {
+      password,
+      is_verified,
+      email_token,
+      createdAt,
+      updatedAt,
+      ...otherUserDetails
+    } = user;
+    const token = createJwt(idUser);
+    res
+      .cookie("access_token", token, {
+        httpOnly: false,
+        secure: true,
+        sameSite: true,
+      })
+      .status(200)
+      .json({ user: { ...otherUserDetails }, token: token });
+    console.log("everything is good");
   } catch (err) {
     res.status(500).json(err);
   }

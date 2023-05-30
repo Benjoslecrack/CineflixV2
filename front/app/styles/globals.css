@@ -9,19 +9,19 @@
 
   /* Colors */
   --color-red: #e50914;
-  --color-black: #14181C;
+  --color-black: #14181c;
   --color-dark-blue: #090626;
   --color-white: white;
-  --color-dark-red: #C11119;
-  --color-gray : #212529a6;
+  --color-dark-red: #c11119;
+  --color-gray: #212529a6;
 
   /* Theme */
   --primary: var(--color-black);
   --secondary: var(--color-red);
   --secondary-hover: var(--color-dark-red);
   --text: var(--color-white);
-  --text-secondary : var(--color-black);
-  --text-label : var(--color-gray);
+  --text-secondary: var(--color-black);
+  --text-label: var(--color-gray);
 }
 
 /*********************** Default **************************/
@@ -32,7 +32,8 @@
 }
 
 /* Body */
-html, body {
+html,
+body {
   background-color: var(--primary) !important;
   color: var(--text) !important;
 }
@@ -58,25 +59,119 @@ a:hover {
   margin: auto;
 }
 
+/* Inputs */
+input {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+input:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+input::placeholder {
+  color: #6c757d;
+  opacity: 1;
+}
+
 /* Buttons */
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
 .btn-secondary {
   margin: auto !important;
   background-color: var(--secondary) !important;
 }
 
 .btn-secondary:hover {
-  background-color: var(--secondary-hover);
+  background-color: var(--secondary-hover) !important;
+  color: var(--text) !important;
 }
 
 .btn-outline-secondary {
-  border-color: var(--secondary);
-  color: var(--secondary);
+  border-color: var(--secondary) !important;
+  color: var(--secondary) !important;
 }
 
 .btn-outline-secondary:hover {
-  background-color: var(--secondary-hover);
-  color: var(--text);
-  border-color: var(--secondary-hover);
+  background-color: var(--secondary-hover) !important;
+  color: var(--text) !important;
+  border-color: var(--secondary-hover) !important;
+}
+
+/* Modal */
+.modal-overlay {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  /* background-color: rgba(0, 0, 0, 0.6); */
+  backdrop-filter: blur(5px);
+  /* width: 100vw;
+  height: 100vh; */
+}
+
+.modal {
+  position: relative;
+  max-width: 500px;
+  width: 100%;
+  background-color: var(--primary);
+  padding: 20px;
+  border-radius: 4px;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-body {
+  margin-top: 20px;
+}
+
+.modal-footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9998;
 }
 
 /* 
@@ -91,19 +186,15 @@ header {
   top: 0;
   left: 0;
   z-index: 19999;
-  background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(20, 24, 28, 0.8015406846332283) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(20, 24, 28, 0.8015406846332283) 100%
+  );
 }
 
 header .container {
   width: 1000px;
-}
-
-.nextui-c-egxOLa {
-  color: white !important;
-  backdrop-filter: none !important;
-  box-shadow: none !important;
-  background: none !important;
-  /* background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(20, 24, 28, 0.8015406846332283) 100%) !important; */
 }
 
 header li a {
@@ -134,11 +225,62 @@ Index
 
 #hero .backdrop-wrapper {
   padding-top: 500px;
-  position: relative;
+  /* position: relative; */
 }
 
 #hero .backdrop-wrapper::before {
-  background-image: linear-gradient(90deg, #14181d 0, rgba(20, 24, 29, .986) .97%, rgba(20, 24, 29, .945) 2.07833333%, rgba(20, 24, 29, .883) 3.29666667%, rgba(20, 24, 29, .803) 4.60166667%, rgba(20, 24, 29, .711) 5.96666667%, rgba(20, 24, 29, .61) 7.365%, rgba(20, 24, 29, .504) 8.77166667%, rgba(20, 24, 29, .398) 10.16%, rgba(20, 24, 29, .296) 11.505%, rgba(20, 24, 29, .203) 12.78%, rgba(20, 24, 29, .122) 13.95833333%, rgba(20, 24, 29, .059) 15.01666667%, rgba(20, 24, 29, .016) 15.92833333%, rgba(20, 24, 29, 0) 16.66666667%, rgba(20, 24, 29, 0) 83.33333333%, rgba(20, 24, 29, .016) 84.07166667%, rgba(20, 24, 29, .059) 84.98333333%, rgba(20, 24, 29, .122) 86.04166667%, rgba(20, 24, 29, .203) 87.22%, rgba(20, 24, 29, .296) 88.495%, rgba(20, 24, 29, .398) 89.84%, rgba(20, 24, 29, .504) 91.22833333%, rgba(20, 24, 29, .61) 92.635%, rgba(20, 24, 29, .711) 94.03333333%, rgba(20, 24, 29, .803) 95.39833333%, rgba(20, 24, 29, .883) 96.70333333%, rgba(20, 24, 29, .945) 97.92166667%, rgba(20, 24, 29, .986) 99.03%, #14181d), linear-gradient(0deg, #14181d 0, #14181d 21.48148148%, rgba(20, 24, 29, .986) 23.63703704%, rgba(20, 24, 29, .945) 26.1%, rgba(20, 24, 29, .883) 28.80740741%, rgba(20, 24, 29, .803) 31.70740741%, rgba(20, 24, 29, .711) 34.74074074%, rgba(20, 24, 29, .61) 37.84814815%, rgba(20, 24, 29, .504) 40.97407407%, rgba(20, 24, 29, .398) 44.05925926%, rgba(20, 24, 29, .296) 47.04814815%, rgba(20, 24, 29, .203) 49.88148148%, rgba(20, 24, 29, .122) 52.5%, rgba(20, 24, 29, .059) 54.85185185%, rgba(20, 24, 29, .016) 56.87777778%, rgba(20, 24, 29, 0) 58.51851852%);
+  background-image: linear-gradient(
+      90deg,
+      #14181d 0,
+      rgba(20, 24, 29, 0.986) 0.97%,
+      rgba(20, 24, 29, 0.945) 2.07833333%,
+      rgba(20, 24, 29, 0.883) 3.29666667%,
+      rgba(20, 24, 29, 0.803) 4.60166667%,
+      rgba(20, 24, 29, 0.711) 5.96666667%,
+      rgba(20, 24, 29, 0.61) 7.365%,
+      rgba(20, 24, 29, 0.504) 8.77166667%,
+      rgba(20, 24, 29, 0.398) 10.16%,
+      rgba(20, 24, 29, 0.296) 11.505%,
+      rgba(20, 24, 29, 0.203) 12.78%,
+      rgba(20, 24, 29, 0.122) 13.95833333%,
+      rgba(20, 24, 29, 0.059) 15.01666667%,
+      rgba(20, 24, 29, 0.016) 15.92833333%,
+      rgba(20, 24, 29, 0) 16.66666667%,
+      rgba(20, 24, 29, 0) 83.33333333%,
+      rgba(20, 24, 29, 0.016) 84.07166667%,
+      rgba(20, 24, 29, 0.059) 84.98333333%,
+      rgba(20, 24, 29, 0.122) 86.04166667%,
+      rgba(20, 24, 29, 0.203) 87.22%,
+      rgba(20, 24, 29, 0.296) 88.495%,
+      rgba(20, 24, 29, 0.398) 89.84%,
+      rgba(20, 24, 29, 0.504) 91.22833333%,
+      rgba(20, 24, 29, 0.61) 92.635%,
+      rgba(20, 24, 29, 0.711) 94.03333333%,
+      rgba(20, 24, 29, 0.803) 95.39833333%,
+      rgba(20, 24, 29, 0.883) 96.70333333%,
+      rgba(20, 24, 29, 0.945) 97.92166667%,
+      rgba(20, 24, 29, 0.986) 99.03%,
+      #14181d
+    ),
+    linear-gradient(
+      0deg,
+      #14181d 0,
+      #14181d 21.48148148%,
+      rgba(20, 24, 29, 0.986) 23.63703704%,
+      rgba(20, 24, 29, 0.945) 26.1%,
+      rgba(20, 24, 29, 0.883) 28.80740741%,
+      rgba(20, 24, 29, 0.803) 31.70740741%,
+      rgba(20, 24, 29, 0.711) 34.74074074%,
+      rgba(20, 24, 29, 0.61) 37.84814815%,
+      rgba(20, 24, 29, 0.504) 40.97407407%,
+      rgba(20, 24, 29, 0.398) 44.05925926%,
+      rgba(20, 24, 29, 0.296) 47.04814815%,
+      rgba(20, 24, 29, 0.203) 49.88148148%,
+      rgba(20, 24, 29, 0.122) 52.5%,
+      rgba(20, 24, 29, 0.059) 54.85185185%,
+      rgba(20, 24, 29, 0.016) 56.87777778%,
+      rgba(20, 24, 29, 0) 58.51851852%
+    );
   background-repeat: no-repeat;
   content: "";
   display: block;

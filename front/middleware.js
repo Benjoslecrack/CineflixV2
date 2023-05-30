@@ -3,9 +3,9 @@ import { NextResponse } from "next/server";
 export function middleware(request) {
   let url = request.url;
 
-  if (url.startsWith("http://localhost:3010/register")) {
-    return NextResponse.redirect("http://localhost:3010/");
-  }
+  // if (url.startsWith("http://localhost:3010/register")) {
+  //   return NextResponse.redirect("http://localhost:3010/");
+  // }
 
   /* Déconnecté */
   if (!request.cookies.get("access_token")?.value) {
