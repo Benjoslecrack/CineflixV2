@@ -9,6 +9,7 @@ import path from "path";
 // Import routers
 import usersRoute from "./routes/users.js";
 import authRoute from "./routes/auth.js";
+import moviesRoute from "./routes/movies.js";
 
 // Configs
 dotenv.config();
@@ -37,6 +38,7 @@ app.use('/uploads', express.static('uploads'));
 // Routes
 app.use("/api/users", usersRoute);
 app.use("/api/auth", authRoute);
+app.use("/api/movies", moviesRoute);
 
 // Gestion de l'erreur
 app.use((err, req, res, next) => {

@@ -44,7 +44,7 @@ export default function App() {
         {members.map((member) => (
           <Link key={member.id} className="flex flex-col items-center" href={`/members/${member.id}`}>
             <img
-              src={member.profil_pic}
+              src={`images/${member.profil_pic}`}
               alt={member.username}
               className="w-20 h-20 rounded-full mb-2"
             />

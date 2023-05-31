@@ -1,6 +1,6 @@
 import {
   getUserByEmail,
-  updateUser, getUser, getUserById,getAllUsers
+  updateUser, getUser, getUserById, getAllUsers, addMovieToWatchedListForUserId
 } from "../requests/users.js";
 import { createError } from "../helpers/errors.js";
 import bcrypt from "bcryptjs";
@@ -33,46 +33,16 @@ export const getUserUpdateController = async (req, res) => {
 };
 // POST UPDATE USER
 export const postUserUpdateController = async (req, res, next) => {
-  const id = req.params.id;
-  console.log(id, "id for update");
-  const user = await getUserById(id);
-  console.log("user", user)
-  const isPasswordCorrect = await bcrypt.compare(req.body.password, user.password);
-  if (!isPasswordCorrect) {
-    const error = new Error("Le mot de passe est incorrect.");
-    error.status = 400;
-    return next(error);
-  }
-  delete req.body.password;
-  if(req.files.cv){
-    if(user.cv){
-      fs.unlink(`./public/uploads/${user.cv}`, (err) => {
-        if (err) {
-          console.error(err);
-          return;
-        }
-      });
-    }
-    req.body.cv = req.files.cv[0].filename;
-  }
-  if(req.files.pp){
-    if(user.pp){
-      fs.unlink(`./public/uploads/${user.pp}`, (err) => {
-        if (err) {
-          console.error(err);
-          return;
-        }
-      });
-    }
-    req.body.pp = req.files.pp[0].filename;
-  }
-  console.log("updateuser", req.body)
-  try {
-    let user = await updateUser(req.body, req.body.email);
-    res.status(200).json(user);
-    next();
-  } catch (error) {
-    res.status(404).json({ message: error.message, passwordError: error.status === 400 ? error.message : undefined });
+  try{
+    const {id, profil_pic, username} = req.body;
+
+    // Update BDD
+    const idUserUpdate = await updateUser(req.body, id);
+
+    res.status(200).json(idUserUpdate);
+  
+  } catch (err) {
+    res.status(404).json(error.message);
   }
 }
 
@@ -131,3 +101,18 @@ export const userVerifyToken = async (req, res) => {
   console.log("user in verify token", user)
   res.status(200).send(user);
 };
+
+// ADD MOVIE TO WATCHLIST
+export const addMovieToWatchedList = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { apiMovieId } = req.body;
+
+    // Appeler le service pour ajouter le film à la liste "Watched Movies"
+    await addMovieToWatchedListForUserId(id, apiMovieId);
+
+    res.status(200).json({ message: 'Film added to Watched Movies list' });
+  } catch (error) {
+    res.status(500).json({ error: 'Something went wrong' });
+  }
+}

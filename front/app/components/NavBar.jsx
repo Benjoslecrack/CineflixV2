@@ -68,8 +68,8 @@ const Navbarr = () => {
               </Link>
             </li>
             <li>
-              <Link href="#" className="px-2">
-                Playlists
+              <Link href="/watchlists" className="px-2">
+                WatchLists
               </Link>
             </li>
             <li>
@@ -93,7 +93,7 @@ const Navbarr = () => {
               {console.log(sharedState.user)}
               <div className="relative cursor-pointer" onClick={handleAvatarClick} ref={dropdownRef}>
                 <Avatar
-                  src={sharedState.user.profil_pic}
+                  src={`images/${sharedState.user.profil_pic}`}
                   alt={sharedState.user.name}
                   size="medium"
                 />

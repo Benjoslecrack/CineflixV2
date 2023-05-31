@@ -2,7 +2,7 @@ CREATE DATABASE  IF NOT EXISTS `cineflix` /*!40100 DEFAULT CHARACTER SET utf8mb4
 USE `cineflix`;
 -- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: cineflix
+-- Host: localhost    Database: cineflix
 -- ------------------------------------------------------
 -- Server version	8.0.31
 
@@ -159,7 +159,7 @@ CREATE TABLE `friendrequest` (
   `request_id` int NOT NULL AUTO_INCREMENT,
   `sender_id` int NOT NULL,
   `receiver_id` int NOT NULL,
-  `status` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
+  `status` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`request_id`),
@@ -190,7 +190,7 @@ CREATE TABLE `friendship` (
   `friendship_id` int NOT NULL AUTO_INCREMENT,
   `user_id_1` int NOT NULL,
   `user_id_2` int NOT NULL,
-  `status` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`friendship_id`),
@@ -394,7 +394,7 @@ CREATE TABLE `users` (
   `roles` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'user' COMMENT '(DC2Type:json)',
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `username` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `profil_pic` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'images/default.jpg',
+  `profil_pic` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'default0.jpg',
   `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '(DC2Type:datetime_immutable)',
   `is_verified` tinyint(1) NOT NULL DEFAULT '0',
   `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -410,7 +410,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (7,'fontaine28210@gmail.com','user','$2a$10$DAAeGybAIHaj18.p8uyHjuIS.Zu4jOVjA19bpe/zuSug9v.vagV5m','benjy','public\\images\\profil\\default.png','2023-05-24 09:46:03',0,'2023-05-24 09:46:03','\"null\"'),(13,'qsdf@qsdf.fr','user','$2a$10$IcavYkaFP7efvXl272Qdh.Q51Pdg7xVjqYh8zQoY4iryH3rtFi6De','qsdf','public\\images\\profil\\default.png','2023-05-24 12:45:20',0,'2023-05-24 12:45:20','\"null\"'),(30,'test@test.fr','user','$2a$10$.Uq6KHCj7COA.VEmBsXVAuerWGNJ1GoteF8xEgJndnBpXwjBAlE/K','test','images/default.jpg','2023-05-26 15:47:01',0,'2023-05-26 15:47:41','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODUxMDg4MjEsImV4cCI6MTY4NTE5NTIyMX0.senLD53skVly0oIpAA-DuHaVIIGAvBSF3IV_6qskPdc'),(31,'pablo@pablo.fr','user','$2a$10$zcclhGBfDrLPAMetbAxRpu1UAT4Y9iZlNCSWuPnjU3/.VLO8D6NjC','pablo','images/default.jpg','2023-05-30 09:03:07',0,'2023-05-30 09:03:07','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODU0MzAxODcsImV4cCI6MTY4NTUxNjU4N30.V3MJX7a8JhQUifrFh542xKec3NTQgckMLG4cDb13Xh0');
+INSERT INTO `users` VALUES (7,'fontaine28210@gmail.com','user','$2a$10$DAAeGybAIHaj18.p8uyHjuIS.Zu4jOVjA19bpe/zuSug9v.vagV5m','benjy','public\\images\\profil\\default.png','2023-05-24 09:46:03',0,'2023-05-24 09:46:03','\"null\"'),(13,'qsdf@qsdf.fr','user','$2a$10$IcavYkaFP7efvXl272Qdh.Q51Pdg7xVjqYh8zQoY4iryH3rtFi6De','qsdf','public\\images\\profil\\default.png','2023-05-24 12:45:20',0,'2023-05-24 12:45:20','\"null\"'),(30,'test@test.fr','user','$2a$10$.Uq6KHCj7COA.VEmBsXVAuerWGNJ1GoteF8xEgJndnBpXwjBAlE/K','testy','default2.jpg','2023-05-26 15:47:01',0,'2023-05-31 10:20:56','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODUxMDg4MjEsImV4cCI6MTY4NTE5NTIyMX0.senLD53skVly0oIpAA-DuHaVIIGAvBSF3IV_6qskPdc'),(31,'pablo@pablo.fr','user','$2a$10$zcclhGBfDrLPAMetbAxRpu1UAT4Y9iZlNCSWuPnjU3/.VLO8D6NjC','pablo','default0.jpg','2023-05-30 09:03:07',0,'2023-05-31 09:38:43','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODU0MzAxODcsImV4cCI6MTY4NTUxNjU4N30.V3MJX7a8JhQUifrFh542xKec3NTQgckMLG4cDb13Xh0');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -440,6 +440,35 @@ LOCK TABLES `users_movies` WRITE;
 /*!40000 ALTER TABLE `users_movies` DISABLE KEYS */;
 /*!40000 ALTER TABLE `users_movies` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `watchlist`
+--
+
+DROP TABLE IF EXISTS `watchlist`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `watchlist` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `api_movie_id` varchar(255) NOT NULL,
+  `rating` decimal(3,1) DEFAULT NULL,
+  `comment` text,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `watchlist_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `watchlist`
+--
+
+LOCK TABLES `watchlist` WRITE;
+/*!40000 ALTER TABLE `watchlist` DISABLE KEYS */;
+INSERT INTO `watchlist` VALUES (1,30,'tt0439572',5.0,'TEst 1 2');
+/*!40000 ALTER TABLE `watchlist` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -450,4 +479,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-30 22:51:29
+-- Dump completed on 2023-05-31 16:58:27
