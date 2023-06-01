@@ -21,7 +21,7 @@ export const insertMovieToWatchlist = async (movieData) => {
 
 export const getWatchlistById = async (id) => {
     try {
-        const query = "SELECT * FROM watchlist WHERE user_id = ?";
+        const query = "SELECT api_movie_id, rating, comment FROM watchlist WHERE user_id = ?";
         const values = [id];
     
         const [result] = await pool.query(query, values);

@@ -10,16 +10,14 @@ export function middleware(request) {
   /* Déconnecté */
   if (!request.cookies.get("access_token")?.value) {
     switch (url) {
-      case "http://localhost:3010/formations":
-        return NextResponse.redirect("https://monparcoursformation.fr/");
-      case "http://localhost:3010/actus":
-        return NextResponse.redirect("https://monparcoursformation.fr/");
-      case "http://localhost:3000/modifierMotDePasse":
-        return NextResponse.redirect("http://localhost:3010/");
-      case "http://localhost:3000/profil":
-        return NextResponse.redirect("http://localhost:3010/");
-      case "http://localhost:3000/trading-book":
-        return NextResponse.redirect("http://localhost:3010/inscription");
+      case "http://localhost:3010/watchlists":
+        return NextResponse.redirect("http://localhost:3010");
+      case "http://localhost:3010/profile":
+        return NextResponse.redirect("http://localhost:3010");
+        case "http://localhost:3010/logout":
+          return NextResponse.redirect("http://localhost:3010");
+      case "http://localhost:3000/members":
+        return NextResponse.redirect("http://localhost:3010");
       default:
         return null;
     }
@@ -28,11 +26,9 @@ export function middleware(request) {
   // Connecté
   if (request.cookies.get("access_token")?.value) {
     switch (url) {
-      case "http://localhost:3010/connexion":
+      case "http://localhost:3010/login":
         return NextResponse.redirect("http://localhost:3010/");
-      case "http://localhost:3010/formations":
-        return NextResponse.redirect("https://monparcoursformation.fr/");
-      case "http://localhost:3010/actus":
+      case "http://localhost:3010/register":
         return NextResponse.redirect("http://localhost:3010/");
       default:
         return null;

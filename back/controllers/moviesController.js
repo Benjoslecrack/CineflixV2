@@ -15,7 +15,7 @@ export const getWatchlist = async (req, res) => {
         console.log(req.params);
         const watchList = await getWatchlistById(req.params.id);
         console.log(watchList)
-        res.status(200).json(watchList)
+        res.status(200).json(watchList);
     } catch (err) {
         res.status(404).json(err.message);
     }

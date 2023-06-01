@@ -96,7 +96,7 @@ export default function App({ params }) {
     try {
       const response = await fetch(url, options);
       await response.json();
-      router.push("/")
+      router.push("/movies")
     } catch (error) {
       setError(error);
       console.error(error);
